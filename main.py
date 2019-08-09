@@ -32,7 +32,7 @@ def input_int(msg):
             pass
 
 
-def gen(glob=GLOBALS):
+def gen_base(glob=GLOBALS):
     bits = int(input_int('How many bits? '))
     glob.p = next_prime(getrandbits(bits))
     print('p is', hex(glob.p))
@@ -47,6 +47,11 @@ def gen_g(prime):
             return testing
 
 
+def set_base(glob=GLOBALS):
+    glob.p = input_int('Type p: ')
+    glob.g = input_int('Type g: ')
+
+
 MENU = \
     '''
     Type one of these options:
@@ -58,7 +63,8 @@ MENU = \
     '''
 
 MENU_OPTS = {
-    '1': gen,
+    '1': gen_base,
+    '2': set_base,
     'q': exit
 }
 
