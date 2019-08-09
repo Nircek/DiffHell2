@@ -52,6 +52,20 @@ def set_base(glob=GLOBALS):
     glob.g = input_int('Type g: ')
 
 
+def calc_public(glob=GLOBALS):
+    glob.a = input_int('Type a (try to make it having high entropy): ')
+    if glob.a >= glob.p:
+        print('a is bigger than p')
+    glob.A = powmod(glob.g, glob.a, glob.p)
+    print('A is', hex(glob.g))
+
+
+def calc_common(glob=GLOBALS):
+    glob.B = input_int('Type B: ')
+    glob.s = powmod(glob.B, glob.a, glob.p)
+    print('s is', hex(glob.s))
+
+
 MENU = \
     '''
     Type one of these options:
@@ -65,6 +79,8 @@ MENU = \
 MENU_OPTS = {
     '1': gen_base,
     '2': set_base,
+    '3': calc_public,
+    '4': calc_common,
     'q': exit
 }
 
